@@ -1,0 +1,5 @@
+docker-compose start nginx php-fpm mariadb workspace
+
+docker-compose stop nginx php-fpm mariadb workspace
+
+docker-composer run workspace bash

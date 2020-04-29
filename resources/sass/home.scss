@@ -1,0 +1,60 @@
+footer .footer, header .content {
+    border-radius: 6px;
+}
+
+.item-container:hover {
+    background-color: $white-bis;
+}
+
+.item-folder {
+    padding-bottom: 0;
+    padding-top: $size-5;
+    font-weight: bold;
+}
+
+.left-content-column {
+    height: 100%;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.buttons-container {
+    display: flex;
+    //flex-direction: row;
+    align-items: center;
+}
+
+.buttons-container a, .buttons-container span {
+    margin: 0 0.5rem;
+}
+
+.navbar-end .isGuest {
+    background-color: transparent;
+}
+
+.isGuest {
+    box-shadow: 0 0 0 0;
+    background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+    .item-container {
+        background-color: $white-bis;
+        border-radius: $radius-large;
+        margin-top: $size-small;
+    }
+
+    .item-name-val, .item-updated-val {
+        padding: 0.1rem $size-6;
+    }
+
+    .buttons-container {
+        display: block;
+    }
+
+    .column {
+        padding: $size-smallest $size-normal;
+    }
+}

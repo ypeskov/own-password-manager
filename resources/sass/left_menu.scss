@@ -1,0 +1,10 @@
+.left-menu-container {
+    min-height: 40vh;
+    background-color: $cyan;
+    padding: $size-normal;
+    border-radius: $radius-large;
+}
+
+.left-menu-container .menu-label {
+    color: $white-bis;
+}
