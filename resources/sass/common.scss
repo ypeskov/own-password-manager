@@ -31,8 +31,13 @@ header .content {
 }
 
 .user-settings-content {
+    padding: $size-small;
     background-color: lightgray;
     border-radius: 6px;
+}
+
+.top-spacing-normal {
+    margin-top: $size-normal;
 }
 
 @media screen and (max-width: $tablet) {

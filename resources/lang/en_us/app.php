@@ -60,4 +60,8 @@ return [
     'Unknown error during saving' => 'Unknown error during saving',
     'Profile' => 'Profile',
     'Export' => 'Export',
+    'Here you can export your data into different targets: File, Google Drive, Dropbox or send by email and messenger'
+        => 'Here you can export your data into different targets: File, Google Drive, Dropbox or send by email and messenger',
+    'Import encrypted' => 'Import encrypted',
+
 ];

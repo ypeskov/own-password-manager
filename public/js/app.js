@@ -2274,8 +2274,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "ExportData"
+  name: "ExportData",
+  data: function data() {
+    return {
+      isEncrypted: true,
+      exportMethod: 'file'
+    };
+  },
+  methods: {
+    startExport: function startExport() {}
+  }
 });
 
 /***/ }),
@@ -21502,7 +21525,37 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "user-settings-content" }, [
-    _vm._v("\n    Export!\n")
+    _c("p", [
+      _vm._v(
+        _vm._s(
+          _vm.trans(
+            "app.Here you can export your data into different targets: File, Google Drive, Dropbox or send by email and messenger"
+          ) + "."
+        )
+      )
+    ]),
+    _vm._v(" "),
+    _c("hr"),
+    _vm._v(" "),
+    _c("div", [
+      _c("label", { staticClass: "checkbox" }, [
+        _c("input", {
+          attrs: { type: "checkbox" },
+          domProps: { checked: _vm.isEncrypted }
+        }),
+        _vm._v(
+          "\n            " +
+            _vm._s(_vm.trans("app.Import encrypted")) +
+            "\n        "
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "top-spacing-normal" }, [
+      _c("button", { staticClass: "button is-primary" }, [
+        _vm._v(_vm._s(_vm.trans("app.Export")))
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

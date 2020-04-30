@@ -12017,8 +12017,13 @@ header .content {
 }
 
 .user-settings-content {
+  padding: 0.75rem;
   background-color: lightgray;
   border-radius: 6px;
+}
+
+.top-spacing-normal {
+  margin-top: 1rem;
 }
 
 @media screen and (max-width: 769px) {
