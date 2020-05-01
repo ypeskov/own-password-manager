@@ -62,10 +62,8 @@ Route::name('user.')->group(function() {
     Route::prefix('user')->group(function() {
         Route::name('settings.')->group(function() {
             Route::prefix('settings')->group(function() {
-                Route::get('/', UserController::class . '@profile')
+                Route::get('/', UserController::class . '@settings')
                     ->name('settings')->middleware('auth');
-//                Route::get('/export', UserController::class.'@export')
-//                    ->name('export')->middleware('auth');
 
                 Route::post('/password', 'UserController@password')
                     ->name('password')->middleware('auth');
