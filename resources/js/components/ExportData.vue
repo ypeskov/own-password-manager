@@ -12,6 +12,21 @@
         </div>
 
         <div class="top-spacing-normal">
+            <div class="field">
+                <div class="control">
+                    <div>{{ trans('app.Select method of export') }}:</div>
+                    <div class="select is-medium">
+                        <select>
+                            <option value="file">{{ trans('app.File') }}</option>
+                            <option value="file">{{ trans('app.Google Drive') }}</option>
+                            <option value="file">{{ trans('app.Dropbox') }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="top-spacing-normal">
             <button class="button is-primary">{{ trans('app.Export') }}</button>
         </div>
 

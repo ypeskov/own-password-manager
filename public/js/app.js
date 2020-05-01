@@ -2288,6 +2288,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExportData",
   data: function data() {
@@ -21559,6 +21574,32 @@ var render = function() {
             _vm._s(_vm.trans("app.Import encrypted")) +
             "\n        "
         )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "top-spacing-normal" }, [
+      _c("div", { staticClass: "field" }, [
+        _c("div", { staticClass: "control" }, [
+          _c("div", [
+            _vm._v(_vm._s(_vm.trans("app.Select method of export")) + ":")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "select is-medium" }, [
+            _c("select", [
+              _c("option", { attrs: { value: "file" } }, [
+                _vm._v(_vm._s(_vm.trans("app.File")))
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "file" } }, [
+                _vm._v(_vm._s(_vm.trans("app.Google Drive")))
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "file" } }, [
+                _vm._v(_vm._s(_vm.trans("app.Dropbox")))
+              ])
+            ])
+          ])
+        ])
       ])
     ]),
     _vm._v(" "),

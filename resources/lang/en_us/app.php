@@ -63,5 +63,8 @@ return [
     'Here you can export your data into different targets: File, Google Drive, Dropbox or send by email and messenger'
         => 'Here you can export your data into different targets: File, Google Drive, Dropbox or send by email and messenger',
     'Import encrypted' => 'Import encrypted',
-
+    'File' => 'File',
+    'Select method of export' => 'Select method of export',
+    'Google Drive' => 'Google Drive',
+    'Dropbox' => 'Dropbox',
 ];
