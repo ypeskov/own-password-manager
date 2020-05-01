@@ -17,7 +17,7 @@
                class="@if (($activeMenu ?? '') === 'note') has-background-light @endif">{{ __('app.Notes') }}</a>
         </li>
         <li>
-            <a href="{{ route('user.settings') }}"
+            <a href="{{ route('user.settings.settings') }}"
                class="@if (($activeMenu ?? '') === 'user.settings') has-background-light @endif">{{ __('app.Settings') }}</a>
         </li>
     </ul>

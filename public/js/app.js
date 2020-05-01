@@ -2620,6 +2620,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
+var availableTabs = ['#profile', '#export'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "SettingsContainer",
   components: {
@@ -2629,12 +2630,22 @@ __webpack_require__.r(__webpack_exports__);
   props: ['user'],
   data: function data() {
     return {
-      currentTab: 'profile'
+      tab: ''
     };
+  },
+  mounted: function mounted() {
+    var tab = window.location.hash;
+
+    if (availableTabs.includes(tab)) {
+      this.tab = tab;
+    } else {
+      this.tab = '#profile';
+    }
   },
   methods: {
     tabClicked: function tabClicked(newTab) {
-      this.currentTab = newTab;
+      this.tab = newTab;
+      window.location.hash = newTab;
     }
   }
 });
@@ -22046,41 +22057,33 @@ var render = function() {
     [
       _c("div", { staticClass: "tabs is-toggle" }, [
         _c("ul", [
-          _c(
-            "li",
-            { class: [_vm.currentTab === "profile" ? "is-active" : ""] },
-            [
-              _c(
-                "a",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.tabClicked("profile")
-                    }
+          _c("li", { class: [_vm.tab === "#profile" ? "is-active" : ""] }, [
+            _c(
+              "a",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.tabClicked("profile")
                   }
-                },
-                [_c("span", [_vm._v(_vm._s(_vm.trans("app.Profile")))])]
-              )
-            ]
-          ),
+                }
+              },
+              [_c("span", [_vm._v(_vm._s(_vm.trans("app.Profile")))])]
+            )
+          ]),
           _vm._v(" "),
-          _c(
-            "li",
-            { class: [_vm.currentTab === "export" ? "is-active" : ""] },
-            [
-              _c(
-                "a",
-                {
-                  on: {
-                    click: function($event) {
-                      return _vm.tabClicked("export")
-                    }
+          _c("li", { class: [_vm.tab === "#export" ? "is-active" : ""] }, [
+            _c(
+              "a",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.tabClicked("export")
                   }
-                },
-                [_c("span", [_vm._v(_vm._s(_vm.trans("app.Export")))])]
-              )
-            ]
-          )
+                }
+              },
+              [_c("span", [_vm._v(_vm._s(_vm.trans("app.Export")))])]
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -22089,8 +22092,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.currentTab === "profile",
-            expression: "currentTab === 'profile'"
+            value: _vm.tab === "#profile",
+            expression: "tab === '#profile'"
           }
         ],
         attrs: { "user-src": _vm.user }
@@ -22101,8 +22104,8 @@ var render = function() {
           {
             name: "show",
             rawName: "v-show",
-            value: _vm.currentTab === "export",
-            expression: "currentTab === 'export'"
+            value: _vm.tab === "#export",
+            expression: "tab === '#export'"
           }
         ],
         attrs: { "user-src": _vm.user }

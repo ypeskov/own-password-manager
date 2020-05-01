@@ -8,12 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function settings() {
+    public function profile() {
         $user = Auth::user();
 
         return view('views.user-settings', [
             'user' => $user,
             'activeMenu' => 'user.settings',
+            'tab' => 'profile',
         ]);
     }
 

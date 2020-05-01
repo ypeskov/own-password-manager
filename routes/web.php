@@ -60,12 +60,19 @@ Route::name('item.')->group(function() {
 
 Route::name('user.')->group(function() {
     Route::prefix('user')->group(function() {
-        Route::get('/settings', 'UserController@settings')
-            ->name('settings')->middleware('auth');
-        Route::post('/settings/password', 'UserController@password')
-            ->name('settings.password')->middleware('auth');
-        Route::post('/settings/{property}','UserController@changeProperty')
-            ->name('settings.property')->middleware('auth');
+        Route::name('settings.')->group(function() {
+            Route::prefix('settings')->group(function() {
+                Route::get('/', UserController::class . '@profile')
+                    ->name('settings')->middleware('auth');
+//                Route::get('/export', UserController::class.'@export')
+//                    ->name('export')->middleware('auth');
+
+                Route::post('/password', 'UserController@password')
+                    ->name('password')->middleware('auth');
+                Route::post('/{property}', 'UserController@changeProperty')
+                    ->name('property')->middleware('auth');
+            });
+        });
     });
 });
 
