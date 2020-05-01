@@ -8,15 +8,15 @@ use \Exception;
 class ExportDataFactory
 {
     static public $availableMethods = [
-        'file' => ExportDataFile::class,
+        'file' => ExportDataDownloadableFile::class,
     ];
 
     /**
      * @param string $method
-     * @return ExportDataInterface
+     * @return mixed
      * @throws Exception
      */
-    static public function getExportIntance(string $method) : ExportDataInterface {
+    static public function getExportIntance(string $method)  {
         if (isset(static::$availableMethods[$method])) {
             return new static::$availableMethods[$method];
         }

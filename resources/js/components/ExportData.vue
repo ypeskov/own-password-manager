@@ -61,9 +61,8 @@
 
                     fileLink.click();
                 } catch (e) {
-                    alert('ooopsin export data');
+                    alert('oops in export data');
                 }
-
             }
         }
     }

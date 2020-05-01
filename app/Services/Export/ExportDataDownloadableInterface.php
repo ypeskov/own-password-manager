@@ -1,6 +1,6 @@
 <?php
 namespace App\Services\Export;
 
-Interface ExportDataInterface {
+Interface ExportDataDownloadableInterface {
     public function getStringData(bool $isEncoded) : string;
 }

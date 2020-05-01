@@ -7,7 +7,7 @@ namespace App\Services\Export;
 use App\Models\Item;
 use Illuminate\Support\Facades\Auth;
 
-class ExportDataFile implements ExportDataInterface
+class ExportDataDownloadableFile implements ExportDataDownloadableInterface
 {
     /**
      * @param bool $isEncoded

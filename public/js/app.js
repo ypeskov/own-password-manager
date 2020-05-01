@@ -2359,7 +2359,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 12:
                 _context.prev = 12;
                 _context.t0 = _context["catch"](0);
-                alert('ooopsin export data');
+                alert('oops in export data');
 
               case 15:
               case "end":
