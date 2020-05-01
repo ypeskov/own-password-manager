@@ -6,7 +6,7 @@
 
         <div>
             <label class="checkbox">
-                <input type="checkbox" :checked="isEncrypted" />
+                <input type="checkbox" v-model:checked="isEncrypted" />
                 {{ trans('app.Import encrypted') }}
             </label>
         </div>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="top-spacing-normal">
-            <button class="button is-primary">{{ trans('app.Export') }}</button>
+            <button @click.prevent="startExport" class="button is-primary">{{ trans('app.Export') }}</button>
         </div>
 
     </div>
@@ -45,7 +45,24 @@
         },
 
         methods: {
-            startExport: function() {
+            startExport: async function() {
+                try {
+                    const response = await axios.get(`/export/data/file?is_encrypted=${this.isEncrypted ? 1 : 0}`, {
+                        responseType: 'blob'
+                    });
+
+                    const fileURL = window.URL.createObjectURL(new Blob([response.data]));
+                    const fileLink = document.createElement('a');
+
+                    fileLink.href = fileURL;
+                    fileLink.setAttribute('download', 'data.csv');
+
+                    document.body.appendChild(fileLink);
+
+                    fileLink.click();
+                } catch (e) {
+                    alert('ooopsin export data');
+                }
 
             }
         }

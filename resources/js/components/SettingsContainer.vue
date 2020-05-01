@@ -3,13 +3,13 @@
         <div class="tabs is-toggle">
             <ul>
                 <li :class="[(tab === '#profile') ? 'is-active' : '']">
-                    <a @click="tabClicked('profile')">
+                    <a @click="tabClicked('#profile')">
                         <span>{{ trans('app.Profile') }}</span>
                     </a>
                 </li>
 
                 <li :class="[(tab === '#export') ? 'is-active' : '']">
-                    <a @click="tabClicked('export')">
+                    <a @click="tabClicked('#export')">
                         <span>{{ trans('app.Export') }}</span>
                     </a>
                 </li>

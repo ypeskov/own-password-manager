@@ -74,6 +74,12 @@ Route::name('user.')->group(function() {
     });
 });
 
+Route::name('export.')->group(function() {
+    Route::prefix('export')->group(function() {
+        Route::get('/data/{method}', ExportDataController::class.'@export')->name('date')->middleware('auth');
+    });
+});
+
 Route::name('data.')->group(function() {
     Route::prefix('data')->group(function() {
         Route::get('/itemtype', 'DataSourceController@getItemTypes')->name('itemtype')->middleware('auth');
