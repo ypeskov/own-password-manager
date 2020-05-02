@@ -5,26 +5,25 @@ namespace App\Services\Export;
 
 
 use App\Models\Item;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class ExportDataDownloadableFile implements ExportDataDownloadableInterface
+abstract class ExportData
 {
-    /**
-     * @param bool $isEncoded
-     * @return array
-     * @throws \Exception
-     */
-    public function getStringData(bool $isEncoded=true) : string
+    public function prepareData(User $user, bool $isEncrypted=true) : array
     {
         $allItems = Item::where('user_id', Auth::user()->id)
             ->orderBy('folder')
             ->orderBy('name')
             ->get();
+
         $key = session('enckey');
+
         $items = [];
         $items[] = 'Name,Url,Folder,Username,Password,Comments';
+
         foreach($allItems as $item) {
-            if (!$isEncoded) {
+            if (!$isEncrypted) {
                 $item = $item->decrypt($key);
             }
             $items[] = $item->name.','
@@ -35,6 +34,6 @@ class ExportDataDownloadableFile implements ExportDataDownloadableInterface
                 .$item->comments;
         }
 
-        return implode("\n", $items);
+        return  $items;
     }
 }

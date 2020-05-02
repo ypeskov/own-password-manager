@@ -2,7 +2,7 @@
 
 namespace App\Services\Export;
 
-Interface ExportDataSendableInterface
+Interface ExportDataSendable
 {
     public function sendExportData() : bool;
 }

@@ -8,7 +8,8 @@ use \Exception;
 class ExportDataFactory
 {
     static public $availableMethods = [
-        'file' => ExportDataDownloadableFile::class,
+        'file' => ExportDataFile::class,
+        'google-drive' => ExportDataGoogleDrive::class,
     ];
 
     /**
