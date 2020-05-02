@@ -17,9 +17,8 @@
                     <div>{{ trans('app.Select method of export') }}:</div>
                     <div class="select is-medium">
                         <select>
-                            <option value="file">{{ trans('app.File') }}</option>
-                            <option value="file">{{ trans('app.Google Drive') }}</option>
-                            <option value="file">{{ trans('app.Dropbox') }}</option>
+                            <option @click.prevent="changeMethod('file')">{{ trans('app.File') }}</option>
+                            <option @click.prevent="changeMethod('google-drive')">{{ trans('app.Google Drive') }}</option>
                         </select>
                     </div>
                 </div>
@@ -46,8 +45,10 @@
 
         methods: {
             startExport: async function() {
+                const method = this.exportMethod;
+
                 try {
-                    const response = await axios.get(`/export/data/file?is_encrypted=${this.isEncrypted ? 1 : 0}`, {
+                    const response = await axios.get(`/export/data/${method}?is_encrypted=${this.isEncrypted ? 1 : 0}`, {
                         responseType: 'blob'
                     });
 
@@ -63,6 +64,10 @@
                 } catch (e) {
                     alert('oops in export data');
                 }
+            },
+
+            changeMethod: function(method) {
+                this.exportMethod = method;
             }
         }
     }

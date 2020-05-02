@@ -2322,7 +2322,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ExportData",
   data: function data() {
@@ -2334,18 +2333,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     startExport: function () {
       var _startExport = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response, fileURL, fileLink;
+        var method, response, fileURL, fileLink;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios.get("/export/data/file?is_encrypted=".concat(this.isEncrypted ? 1 : 0), {
+                method = this.exportMethod;
+                _context.prev = 1;
+                _context.next = 4;
+                return axios.get("/export/data/".concat(method, "?is_encrypted=").concat(this.isEncrypted ? 1 : 0), {
                   responseType: 'blob'
                 });
 
-              case 3:
+              case 4:
                 response = _context.sent;
                 fileURL = window.URL.createObjectURL(new Blob([response.data]));
                 fileLink = document.createElement('a');
@@ -2353,20 +2353,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 fileLink.setAttribute('download', 'data.csv');
                 document.body.appendChild(fileLink);
                 fileLink.click();
-                _context.next = 15;
+                _context.next = 16;
                 break;
 
-              case 12:
-                _context.prev = 12;
-                _context.t0 = _context["catch"](0);
+              case 13:
+                _context.prev = 13;
+                _context.t0 = _context["catch"](1);
                 alert('oops in export data');
 
-              case 15:
+              case 16:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, this, [[0, 12]]);
+        }, _callee, this, [[1, 13]]);
       }));
 
       function startExport() {
@@ -2374,7 +2374,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return startExport;
-    }()
+    }(),
+    changeMethod: function changeMethod(method) {
+      this.exportMethod = method;
+    }
   }
 });
 
@@ -22422,17 +22425,31 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "select is-medium" }, [
             _c("select", [
-              _c("option", { attrs: { value: "file" } }, [
-                _vm._v(_vm._s(_vm.trans("app.File")))
-              ]),
+              _c(
+                "option",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.changeMethod("file")
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.trans("app.File")))]
+              ),
               _vm._v(" "),
-              _c("option", { attrs: { value: "file" } }, [
-                _vm._v(_vm._s(_vm.trans("app.Google Drive")))
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "file" } }, [
-                _vm._v(_vm._s(_vm.trans("app.Dropbox")))
-              ])
+              _c(
+                "option",
+                {
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.changeMethod("google-drive")
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(_vm.trans("app.Google Drive")))]
+              )
             ])
           ])
         ])
