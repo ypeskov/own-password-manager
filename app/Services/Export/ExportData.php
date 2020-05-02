@@ -10,23 +10,41 @@ use Illuminate\Support\Facades\Auth;
 
 abstract class ExportData
 {
-    public function prepareData(User $user, bool $isEncrypted=true) : array
+    /**
+     * @var array
+     */
+    private $exportData = [];
+
+    /**
+     * @var string
+     */
+    private $enckey;
+
+    public function __construct(string $enckey)
     {
-        $allItems = Item::where('user_id', Auth::user()->id)
+        $this->enckey = $enckey;
+    }
+
+    /**
+     * @param User $user
+     * @param bool $isEncrypted
+     * @return ExportData
+     */
+    public function prepareData(User $user, bool $isEncrypted=true) : ExportData
+    {
+        $allItems = Item::where('user_id', $user->id)
             ->orderBy('folder')
             ->orderBy('name')
             ->get();
 
-        $key = session('enckey');
-
-        $items = [];
-        $items[] = 'Name,Url,Folder,Username,Password,Comments';
+        $this->exportData = [];
+        $this->exportData[] = 'Name,Url,Folder,Username,Password,Comments';
 
         foreach($allItems as $item) {
             if (!$isEncrypted) {
-                $item = $item->decrypt($key);
+                $item = $item->decrypt($this->enckey);
             }
-            $items[] = $item->name.','
+            $this->exportData[] = $item->name.','
                 .$item->url.','
                 .$item->folder.','
                 .$item->username.','
@@ -34,6 +52,14 @@ abstract class ExportData
                 .$item->comments;
         }
 
-        return  $items;
+        return  $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getData() : array
+    {
+        return $this->exportData;
     }
 }

@@ -4,7 +4,7 @@
 namespace App\Services\Export;
 
 
-class ExportDataGoogleDrive implements ExportDataSendable
+class ExportDataGoogleDrive extends ExportData implements ExportDataSendable
 {
     public function sendExportData(): bool
     {

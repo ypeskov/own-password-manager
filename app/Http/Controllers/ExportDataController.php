@@ -17,9 +17,10 @@ class ExportDataController extends Controller
         }
 
         $isEncrypted =  (bool) request()->get('is_encrypted', true);
+        $enckey = session('enckey');
 
         try {
-            $exporter = ExportDataFactory::getExportIntance($method);
+            $exporter = ExportDataFactory::getExportIntance($method, $enckey);
 
             if ($exporter instanceof ExportDataDownloadable)
             {
