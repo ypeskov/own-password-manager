@@ -23,7 +23,9 @@ Vue.use(Vue2Filters);
 Vue.prototype.trans = (string, args) => {
 
     let value = _.get(window.i18n, string);
-
+    if (!value) {
+        value = string
+    }
     _.eachRight(args, (paramVal, paramKey) => {
         value = _.replace(value, `:${paramKey}`, paramVal);
     });
@@ -43,12 +45,6 @@ const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-// Vue.component('select-new-item', require('./components/SelectNewItem.vue').default);
-// Vue.component('delete-item', require('./components/DeleteItem.vue').default);
-// Vue.component('items-container', require('./components/ItemsContainer.vue').default);
-// Vue.component('header-navigation', require('./components/HeaderNavigation.vue').default);
-// Vue.component('change-user-property', require('./components/ChangeUserPropertyComponent').default);
-// Vue.component('change-password', require('./components/ChangePasswordComponent').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

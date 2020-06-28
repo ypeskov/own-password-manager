@@ -58,7 +58,7 @@ abstract class ExportData
     /**
      * @return array
      */
-    public function getData() : array
+    public function getExportData() : array
     {
         return $this->exportData;
     }

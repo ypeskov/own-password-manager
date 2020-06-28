@@ -11,9 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ExportDataController extends Controller
 {
-    public function export(string $method='') {
+    public function export(string $method='')
+    {
         if (!isset(ExportDataFactory::$availableMethods[$method])) {
-            abort(500, 'Unknown export method');
+            throw new Exception('Unknown export method');
         }
 
         $isEncrypted =  (bool) request()->get('is_encrypted', true);
@@ -30,7 +31,7 @@ class ExportDataController extends Controller
                     ->header('Content-Type', 'text/csv')
                     ->header('Content-Disposition', 'attachment; filename="data.csv"');
             } else if ($exporter instanceof ExportDataSendable) {
-                ddd($exporter);
+                $exporter->prepareData(Auth::user(), $isEncrypted)->sendExportData();
             } else {
                 throw new Exception('Unknown export method');
             }

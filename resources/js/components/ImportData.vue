@@ -1,6 +1,6 @@
 <template>
     <div class="user-settings-content">
-        <p>{{ trans('app.Here you can export your data into different targets: File, Google Drive, Dropbox or send by email and messenger')+'.' }}</p>
+        <p>{{ trans('app.Here you can import data from CSV file')+'.' }}</p>
 
         <hr>
 
@@ -34,7 +34,7 @@
 
 <script>
     export default {
-        name: "ExportData",
+        name: "ImportData",
 
         data() {
             return {

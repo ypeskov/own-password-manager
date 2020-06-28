@@ -8,6 +8,7 @@ class ExportDataGoogleDrive extends ExportData implements ExportDataSendable
 {
     public function sendExportData(): bool
     {
-        // TODO: Implement sendExportData() method.
+        dump('Sending to Google Drive');
+        ddd($this->getExportData());
     }
 }

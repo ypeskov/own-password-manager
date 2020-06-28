@@ -17,6 +17,6 @@ class ExportDataFile extends ExportData implements ExportDataDownloadable
      */
     public function getStringData(User $user, bool $isEncrypted=true) : string
     {
-        return implode("\n", $this->prepareData($user, $isEncrypted)->getData());
+        return implode("\n", $this->prepareData($user, $isEncrypted)->getExportData());
     }
 }
